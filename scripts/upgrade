@@ -27,12 +27,31 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-### Same as during install
-###
-### The file will automatically be backed-up if it's found to be manually modified (because
-### ynh_config_add keeps track of the file's checksum)
-
 ynh_config_add --template=".env" --destination="$install_dir/.env"
+
+#=================================================
+# UPGRADE WISHLIST
+#=================================================
+ynh_script_progression "Building the app..."
+
+pushd $install_dir
+    ynh_script_progression "Installing the app..."
+    ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" pnpm install --frozen-lockfile
+
+    ynh_script_progression "Sync svelte kit..."
+    ynh_exec_as_app pnpm svelte-kit sync
+
+    ynh_script_progression "Running DB migrations of the app..."
+    ynh_exec_as_app pnpm prisma generate
+
+    ynh_script_progression "Building the app..."
+    ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" TURBO_TELEMETRY_DISABLED=1 pnpm run build
+
+    ynh_script_progression "Prune for prod..."
+    ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" TURBO_TELEMETRY_DISABLED=1 pnpm prune --prod
+popd
+
+chown -R $app:$app $install_dir
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATION
