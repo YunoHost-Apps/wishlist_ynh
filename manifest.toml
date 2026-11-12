@@ -86,4 +86,4 @@ ram.runtime = "50M"
     packages = "nginx"
 
     [resources.nodejs]
-    version = "22"
+    version = "24"
