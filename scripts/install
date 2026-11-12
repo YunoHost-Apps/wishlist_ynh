@@ -46,10 +46,12 @@ ynh_script_progression "Building the app..."
 
 pushd $install_dir
     ynh_script_progression "Installing the app..."
+    export VERSION="v0.69.0"
+    export SHA="f39c07db0f7a8467372bfcfdd7f5d59c035a9bd4e522996db17509bde005059c"
     ynh_exec_as_app pnpm install --frozen-lockfile
 
     ynh_script_progression "Sync svelte kit..."
-    ynh_exec_as_app NODE_ENV=production pnpm svelte-kit sync
+    ynh_exec_as_app pnpm svelte-kit sync
 
     ynh_script_progression "Running DB migrations of the app..."
     ynh_exec_as_app pnpm prisma generate
@@ -58,7 +60,7 @@ pushd $install_dir
     ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" TURBO_TELEMETRY_DISABLED=1 pnpm run build
 
     ynh_script_progression "Prune for prod..."
-    ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" TURBO_TELEMETRY_DISABLED=1 pnpm prune --prod
+    ynh_exec_as_app TURBO_TELEMETRY_DISABLED=1 pnpm prune --prod
 popd
 
 chown -R $app:$app $install_dir
