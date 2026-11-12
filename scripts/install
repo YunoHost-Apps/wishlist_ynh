@@ -46,10 +46,10 @@ ynh_script_progression "Building the app..."
 
 pushd $install_dir
     ynh_script_progression "Installing the app..."
-    ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" pnpm install --frozen-lockfile
+    ynh_exec_as_app pnpm install --frozen-lockfile
 
     ynh_script_progression "Sync svelte kit..."
-    ynh_exec_as_app pnpm svelte-kit sync
+    ynh_exec_as_app NODE_ENV=production pnpm svelte-kit sync
 
     ynh_script_progression "Running DB migrations of the app..."
     ynh_exec_as_app pnpm prisma generate
