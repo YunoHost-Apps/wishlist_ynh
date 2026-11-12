@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "wishlist"
 name = "Wishlist"
-description.en = "Wishlist application that you can share with your friends and family."
-description.fr = "Application de liste de souhaits que vous pouvez partager avec vos amis et votre famille."
+description.en = "Wishlist that you can share with your friends and family."
+description.fr = "Liste de souhaits que vous pouvez partager avec vos amis et votre famille."
 
 version = "0.69.0~ynh1"
 
@@ -13,7 +13,6 @@ maintainers = ["CodeShakingSheep"]
 
 [upstream]
 license = "MIT"
-website = "https://github.com/cmintey/wishlist"
 code = "https://github.com/cmintey/wishlist"
 
 [integration]
