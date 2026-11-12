@@ -8,9 +8,8 @@ It shall NOT be edited by hand.
   Wishlist, packaged for YunoHost
 </h1>
 
-Wishlist application that you can share with your friends and family.
+Wishlist that you can share with your friends and family.
 
-[![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://github.com/cmintey/wishlist)
 [![Version: 0.69.0~ynh1](https://img.shields.io/badge/Version-0.69.0~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/wishlist/)
 
 <div align="center">
@@ -20,7 +19,7 @@ Wishlist application that you can share with your friends and family.
 
 
 ## Screenshots
-![Screenshot of Wishlist](./doc/screenshots/example.jpg)
+![Screenshot of Wishlist](./doc/screenshots/wishlist.png)
 
 ## 📦 Developer info
 
