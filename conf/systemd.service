@@ -7,7 +7,8 @@ WorkingDirectory=__INSTALL_DIR__
 Environment="PATH=__PATH_WITH_NODEJS__"
 EnvironmentFile=__INSTALL_DIR__/.env
 ExecStart=/usr/bin/env sh -c '__INSTALL_DIR__/entrypoint.sh'
-Restart=on-failure
+Restart=always
+RestartSec=10
 
 ### Depending on specificities of your service/app, you may need to tweak these
 ### .. but this should be a good baseline
