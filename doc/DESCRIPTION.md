@@ -1,1 +1,1 @@
-This is a dummy description of this app features
+Wishlist application that you can share with your friends and family.
