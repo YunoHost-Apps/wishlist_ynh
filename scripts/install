@@ -59,11 +59,11 @@ pushd $install_dir
     ynh_hide_warnings ynh_exec_as_app VERSION=$version SHA=$sha NODE_OPTIONS="--max-old-space-size=4096" TURBO_TELEMETRY_DISABLED=1 pnpm run build
 
     ynh_script_progression "Prune for prod..."
-    ynh_hide_warnings ynh_exec_as_app TURBO_TELEMETRY_DISABLED=1 pnpm prune --prod
+    ynh_exec_as_app TURBO_TELEMETRY_DISABLED=1 pnpm prune --prod
 
-    ynh_hide_warnings ynh_exec_as_app pnpm prisma migrate deploy
-    ynh_hide_warnings ynh_exec_as_app pnpm prisma db seed 
-    ynh_hide_warnings ynh_exec_as_app pnpm db:patch
+    ynh_exec_as_app pnpm prisma migrate deploy
+    ynh_exec_as_app pnpm prisma db seed 
+    ynh_exec_as_app pnpm db:patch
 popd
 
 chown -R $app:$app $install_dir
