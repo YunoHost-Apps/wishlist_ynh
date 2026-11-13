@@ -1,15 +1,19 @@
 [Unit]
-Description=Small description of the service
+Description=Wishlist Service
 After=network.target
 
 [Service]
 Type=simple
 User=__APP__
 Group=__APP__
-WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/script
-StandardOutput=append:/var/log/__APP__/__APP__.log
-StandardError=inherit
+WorkingDirectory=__INSTALL_DIR__
+Environment="PATH=__PATH_WITH_NODEJS__"
+Environment="NODE_ENV=production"
+EnvironmentFile=__INSTALL_DIR__/.env
+#ExecStartPre=__NODEJS_DIR__/pnpm prisma migrate deploy && __NODEJS_DIR__/pnpm prisma db seed && __NODEJS_DIR__/pnpm db:patch
+ExecStart=__NODEJS_DIR__/pnpm run start
+Restart=always
+RestartSec=5
 
 ### Depending on specificities of your service/app, you may need to tweak these
 ### .. but this should be a good baseline

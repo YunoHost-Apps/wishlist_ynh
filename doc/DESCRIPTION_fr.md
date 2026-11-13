@@ -1,1 +1,1 @@
-Ceci est une fausse description des fonctionalités de l'app
+Liste de souhaits que vous pouvez partager avec vos amis et votre famille.
