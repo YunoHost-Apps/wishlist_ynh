@@ -1,1 +1,1 @@
-Application de liste de souhaits que vous pouvez partager avec vos amis et votre famille.
+Liste de souhaits que vous pouvez partager avec vos amis et votre famille.
