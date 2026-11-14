@@ -19,7 +19,7 @@ code = "https://github.com/cmintey/wishlist"
 yunohost = ">= 12.1.40"
 helpers_version = "2.1"
 architectures = "all"
-multi_instance = false
+multi_instance = true
 
 ldap = false
 sso = false
