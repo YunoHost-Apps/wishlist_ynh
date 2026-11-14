@@ -21,8 +21,6 @@ ynh_script_progression "Upgrading source files..."
 
 ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env data"
 
-chown -R "$app:www-data" "$install_dir"
-
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
@@ -54,9 +52,11 @@ pushd $install_dir
     ynh_exec_as_app pnpm prisma migrate deploy
     ynh_exec_as_app pnpm prisma db seed 
     ynh_exec_as_app pnpm db:patch
+
+    mkdir -p "$install_dir/uploads"
 popd
 
-chown -R $app:$app $install_dir
+chown -R $app:www-data $install_dir
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATION
